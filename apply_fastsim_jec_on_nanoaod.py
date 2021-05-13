@@ -10,6 +10,7 @@ ROOT.PyConfig.IgnoreCommandLineOptions = True
 from importlib import import_module
 from PhysicsTools.NanoAODTools.postprocessing.framework.postprocessor import PostProcessor
 from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 import *
+ROOT.ROOT.EnableImplicitMT(16)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-o','--output_directory', required=True)
@@ -20,6 +21,6 @@ args = parser.parse_args()
 
 metBranchName = "MET" if args.year != "2017" else "METFixEE2017"
 
-jmeCorrections = createJMECorrector(isMC=True, dataYear=args.year, runPeriod="A", jesUncert="Total", jetType="AK4PFchs", noGroom=False, metBranchName=metBranchName, applySmearing=True, isFastSim=True)
+jmeCorrections = createJMECorrector(isMC=True, dataYear=args.year, runPeriod="", jesUncert="Total", jetType="AK4PFchs", noGroom=False, metBranchName=metBranchName, applySmearing=True, isFastSim=False)
 p=PostProcessor(outputDir=args.output_directory,inputFiles=args.input_files,cut=args.cut_string,modules=[jmeCorrections()],provenance=True, postfix="")
 p.run()
