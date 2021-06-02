@@ -1,8 +1,27 @@
-#./run_jer.sh [mass]
-mkdir -p log/
-for year in {16,17,18}
-	do echo "${year}..."
-		mkdir -p output/20${year}/$1/
+mkdir -p log/$1/
+for sample_16 in {WJetsToLNu_HT-1200To2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-2500ToInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-400To600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-600To800_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-800To1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,WWW_4F_TuneCUETP8M1_13TeV-amcatnlo-pythia8,WWZ_TuneCUETP8M1_13TeV-amcatnlo-pythia8,WW_TuneCUETP8M1_13TeV-pythia8,WZZ_TuneCUETP8M1_13TeV-amcatnlo-pythia8,WZ_TuneCUETP8M1_13TeV-pythia8,ZZZ_TuneCUETP8M1_13TeV-amcatnlo-pythia8,ZZ_TuneCUETP8M1_13TeV-pythia8,TTTT_TuneCUETP8M2T4_13TeV-amcatnlo-pythia8,TTWJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8,TTWJetsToQQ_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8,TTZToLLNuNu_M-10_TuneCUETP8M1_13TeV-amcatnlo-pythia8,TTZToQQ_TuneCUETP8M1_13TeV-amcatnlo-pythia8,ST_s-channel_4f_InclusiveDecays_13TeV-amcatnlo-pythia8,ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1,ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1,ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1,ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1,DYJetsToLL_M-50_HT-1200to2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-600to800_TuneCUETP8M1_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-800to1200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8}
+do echo "${sample_16}..."
+if [ $1 = "16" ]; then
+	mkdir -p /xrootd_user/yjeong/xrootd/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/100000/
+	python apply_fastsim_jec_on_nanoaod.py -o /xrootd/store/user/yjeong/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_16}log.txt &
+fi
+done
 
-		python apply_fastsim_jec_on_nanoaod.py -o output/20${year}/$1/ -y 20${year} -i /xrootd/store/mc/RunII*${year}NanoAODv7/SMS-T1tbs_RPV_mGluino$1_Tune*_13TeV-madgraphMLM-pythia8/NANOAODSIM/*/*/* > log/20${year}_$1GeV_log.txt &
+for sample_17 in {DYJetsToLL_M-50_HT-1200to2500_TuneCP5_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-2500toInf_TuneCP5_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-400to600_TuneCP5_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-600to800_TuneCP5_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-800to1200_TuneCP5_13TeV-madgraphMLM-pythia8,ST_s-channel_4f_leptonDecays_TuneCP5_13TeV-amcatnlo-pythia8,ST_t-channel_antitop_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8,ST_t-channel_top_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8,ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8,ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8,TTTT_TuneCP5_13TeV-amcatnlo-pythia8,TTWJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8,TTWJetsToQQ_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8,TTZToLLNuNu_M-10_TuneCP5_13TeV-amcatnlo-pythia8,TTZToQQ_TuneCP5_13TeV-amcatnlo-pythia8,WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8,WWW_4F_TuneCP5_13TeV-amcatnlo-pythia8,WWZ_4F_TuneCP5_13TeV-amcatnlo-pythia8,WW_TuneCP5_13TeV-pythia8,WZZ_TuneCP5_13TeV-amcatnlo-pythia8,WZ_TuneCP5_13TeV-pythia8,ZZZ_4f_TuneCP5_13TeV_amcatnlo_pythia8,ZZZ_TuneCP5_13TeV-amcatnlo-pythia8,ZZ_TuneCP5_13TeV-pythia8}
+do echo "${sample_17}..."
+
+if [ $1 = "17" ]; then
+	mkdir -p /xrootd_user/yjeong/xrootd/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/
+	python apply_fastsim_jec_on_nanoaod.py -o /xrootd/store/user/yjeong/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_17}log.txt &
+fi
+
+done
+
+for sample_18 in {DYJetsToLL_M-50_HT-1200to2500_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-2500toInf_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-400to600_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-600to800_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8,DYJetsToLL_M-50_HT-800to1200_TuneCP5_PSweights_13TeV-madgraphMLM-pythia8,ST_s-channel_4f_leptonDecays_TuneCP5_13TeV-amcatnlo-pythia8,ST_s-channel_4f_leptonDecays_TuneCP5_13TeV-madgraph-pythia8,ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8,ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8,ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8,ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8,TTTT_TuneCP5_13TeV-amcatnlo-pythia8,TTWJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8,TTWJetsToQQ_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8,TTZToLLNuNu_M-10_TuneCP5_13TeV-amcatnlo-pythia8,TTZToQQ_TuneCP5_13TeV-amcatnlo-pythia8,WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8,WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8,WWW_4F_TuneCP5_13TeV-amcatnlo-pythia8,WWZ_TuneCP5_13TeV-amcatnlo-pythia8,WW_TuneCP5_13TeV-pythia8,WZZ_TuneCP5_13TeV-amcatnlo-pythia8,WZ_TuneCP5_13TeV-pythia8,ZZZ_4f_TuneCP5_13TeV_amcatnlo_pythia8,ZZZ_TuneCP5_13TeV-amcatnlo-pythia8,ZZ_TuneCP5_13TeV-pythia8}
+
+do echo "${sample_18}..."
+if [ $1 = "18" ]; then
+	mkdir -p /xrootd_user/yjeong/xrootd/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/Nano02Apr2020_102X_upgrade2018_realistic_v21-v1/100000/
+	python apply_fastsim_jec_on_nanoaod.py -o /xrootd/store/user/yjeong/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/Nano02Apr2020_102X_upgrade2018_realistic_v21-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_18}log.txt &
+fi
 done
