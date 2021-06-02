@@ -3,7 +3,7 @@ for sample_16 in {WJetsToLNu_HT-1200To2500_TuneCUETP8M1_13TeV-madgraphMLM-pythia
 do echo "${sample_16}..."
 if [ $1 = "16" ]; then
 	mkdir -p /xrootd_user/yjeong/xrootd/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/100000/
-	python apply_fastsim_jec_on_nanoaod.py -o /xrootd/store/user/yjeong/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_16}log.txt &
+	python apply_fastsim_jec_on_nanoaod.py -o /xrootd_user/yjeong/xrootd/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIISummer$1NanoAODv7/${sample_16}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_16}log.txt &
 fi
 done
 
@@ -12,7 +12,7 @@ do echo "${sample_17}..."
 
 if [ $1 = "17" ]; then
 	mkdir -p /xrootd_user/yjeong/xrootd/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/
-	python apply_fastsim_jec_on_nanoaod.py -o /xrootd/store/user/yjeong/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_17}log.txt &
+	python apply_fastsim_jec_on_nanoaod.py -o /xrootd_user/yjeong/xrootd/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/PU2017_12Apr2018_Nano02Apr2020_102X_mc2017_realistic_v8-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIIFall$1NanoAODv7/${sample_17}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_17}log.txt &
 fi
 
 done
@@ -22,6 +22,6 @@ for sample_18 in {DYJetsToLL_M-50_HT-1200to2500_TuneCP5_PSweights_13TeV-madgraph
 do echo "${sample_18}..."
 if [ $1 = "18" ]; then
 	mkdir -p /xrootd_user/yjeong/xrootd/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/Nano02Apr2020_102X_upgrade2018_realistic_v21-v1/100000/
-	python apply_fastsim_jec_on_nanoaod.py -o /xrootd/store/user/yjeong/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/Nano02Apr2020_102X_upgrade2018_realistic_v21-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_18}log.txt &
+	python apply_fastsim_jec_on_nanoaod.py -o /xrootd_user/yjeong/xrootd/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/Nano02Apr2020_102X_upgrade2018_realistic_v21-v1/100000/ -y 20$1 -i /xrootd/store/mc/RunIIAutumn$1NanoAODv7/${sample_18}/NANOAODSIM/*/*/* > log/$1/20$1_${sample_18}log.txt &
 fi
 done
